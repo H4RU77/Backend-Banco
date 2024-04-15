@@ -34,7 +34,7 @@ public class ListaSE<T> {
             return false;
         }
     }
-    public NodoSE<T> Obtener(int pos){
+    public T Obtener(int pos){
 
         if(pos<tamano && pos>=0){
             int contador=0; NodoSE<T> nodoActual;
@@ -44,13 +44,14 @@ public class ListaSE<T> {
                 contador++;
             }
 
-            return nodoActual;
+            return nodoActual.getDato();
         }else{
             System.out.println("Posición inválida");
             return null;
         }
     }
-    public void Agregar(NodoSE<T> nuevoNodo){
+    public void Agregar(T nuevaInfo){
+        NodoSE<T> nuevoNodo= new NodoSE<>(nuevaInfo);
         if(EsVacia()){
             cabeza = nuevoNodo;
         }else{
@@ -92,16 +93,19 @@ public class ListaSE<T> {
             System.out.println("Posición inválida");
         }
     }
-    public void Eliminar(NodoSE nodoAEliminar) {
+    /*
+    public void Eliminar( NodoSE nodoAEliminar) {
         if (cabeza == null) {
             return;
         }
+
         //si el nodo a eliminar es la cabeza
         if (cabeza.equals(nodoAEliminar)) {
             cabeza = cabeza.getSiguiente(); // Elimina la cabeza
             tamano--;
             return;
         }
+
         // encontrar el nodo anterior al nodo a eliminar
         NodoSE nodoAnterior = cabeza;
         while (nodoAnterior.getSiguiente() != null && !nodoAnterior.getSiguiente().equals(nodoAEliminar)) {
@@ -118,5 +122,7 @@ public class ListaSE<T> {
             System.out.println("La cuenta a eliminar no está en la lista.");
         }
     }
+    */
+
 
 }

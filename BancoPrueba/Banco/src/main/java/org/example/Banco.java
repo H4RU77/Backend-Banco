@@ -7,11 +7,10 @@ public class Banco {
 
 
     public void adicionarCuenta(Cuenta c){
-        cuentas.Agregar(new NodoSE<Cuenta>(c));
+        cuentas.Agregar(c);
     }
-    public void eliminarCuenta(NodoSE<Cuenta> c){
-
-        cuentas.Eliminar(c);
+    public void eliminarCuenta(int pos){
+        cuentas.Eliminar(pos);
     }
 
     public Banco(ListaSE<Solicitud> solicitudes, ListaSE<Cuenta> cuentas) {
@@ -38,15 +37,15 @@ public class Banco {
 
 
 
-    public int VerificarCuenta(NodoSE<Solicitud> s) { //regresa indice de la cuenta
+    public int VerificarCuenta(Solicitud s) { //regresa indice de la cuenta
         // Buscar si existe una cuenta para la solicitud
         for (int i = 0; i < cuentas.tamanio(); i++)
-            if (cuentas.Obtener(i).getCuenta().getN_identidad() == s.getSolicitud().getN_identidad())
+            if (cuentas.Obtener(i).getN_identidad() == s.getN_identidad())
                 return i;
 
 
         //si no existe la cuenta, crear y agregarla a la lista de cuentas
-        NodoSE<Cuenta> nuevaCuenta = new NodoSE<>(new Cuenta(s.getSolicitud().getN_identidad(),s.getSolicitud().getCant_depositar(), cuentas.tamanio()-1));
+        Cuenta nuevaCuenta = new Cuenta(s.getN_identidad(),s.getCant_depositar(), cuentas.tamanio()-1);
         cuentas.Agregar(nuevaCuenta);
         return (cuentas.tamanio() - 1); //posición de la nueva cuenta
     }
@@ -55,8 +54,8 @@ public class Banco {
             int tamanioIni= cuentas.tamanio();
             int posicionCuenta = VerificarCuenta(solicitudes.Obtener(i));
             if(tamanioIni==cuentas.tamanio()){
-                double cantidad = solicitudes.Obtener(i).getSolicitud().getCant_depositar();
-                cuentas.Obtener(posicionCuenta).getCuenta().adicionarSaldo_actual(cantidad);
+                double cantidad = solicitudes.Obtener(i).getCant_depositar();
+                cuentas.Obtener(posicionCuenta).adicionarSaldo_actual(cantidad);
             }// Agregar el saldo a la cuenta
         }
         //eliminar solicitudes*
@@ -70,9 +69,9 @@ public class Banco {
         ListaSE<Cuenta> listaDeMillonarios=new ListaSE<Cuenta>(); // crear nueva lista de cuentas para los millonarios
 
         for(int i=0;i<cuentas.tamanio();i++){
-            Cuenta cuentaActual= cuentas.Obtener(i).getCuenta();
+            Cuenta cuentaActual= cuentas.Obtener(i);
             if(cuentaActual.getSaldo_actual()>1_000_000){
-                listaDeMillonarios.Agregar(new NodoSE<Cuenta>(cuentaActual)); //agregando a lista de millonarios
+                listaDeMillonarios.Agregar(cuentaActual); //agregando a lista de millonarios
                 cuentas.Eliminar(i); //borrar a millonario de la lista
                 if(i< cuentas.tamanio()){
                     i++;

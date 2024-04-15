@@ -1,47 +1,34 @@
 package org.example;
 
 public class NodoSE<T> {
-    private Cuenta cuenta;
-    private Solicitud solicitud;
+    private T dato;
+
     private NodoSE<T> siguiente;
 
     // constructores
 
 
-    public NodoSE(Cuenta cuenta) {
-        this.cuenta = cuenta;
+    public NodoSE(T dato) {
+        this.dato = dato;
         this.siguiente=null;
     }
-    public NodoSE(Solicitud solicitud) {
-        this.solicitud = solicitud;
-        this.siguiente=null;
-    }
-    public NodoSE(Cuenta cuenta,NodoSE<T> pSiguiente) {
-        this.cuenta = cuenta;
-        this.siguiente=pSiguiente;
-    }
-    public NodoSE(Solicitud solicitud,NodoSE<T> pSiguiente) {
-        this.solicitud = solicitud;
+
+
+    public NodoSE(T dato,NodoSE<T> pSiguiente) {
+        this.dato = dato;
         this.siguiente=pSiguiente;
     }
 
 
     //get/set
 
-    public Cuenta getCuenta() {
-        return cuenta;
+
+    public T getDato() {
+        return dato;
     }
 
-    public void setCuenta(Cuenta cuenta) {
-        this.cuenta = cuenta;
-    }
-
-    public Solicitud getSolicitud() {
-        return solicitud;
-    }
-
-    public void setSolicitud(Solicitud solicitud) {
-        this.solicitud = solicitud;
+    public void setDato(T dato) {
+        this.dato = dato;
     }
 
     public NodoSE <T> getSiguiente(){

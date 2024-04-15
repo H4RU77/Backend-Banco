@@ -6,24 +6,24 @@ public class Main {
         ListaSE<Cuenta> cuentas = new ListaSE<>();
 
         // Agregar algunas solicitudes y cuentas
-        solicitudes.Agregar(new NodoSE<>(new Solicitud(7, 80000, "Cliente 3")));
-        solicitudes.Agregar(new NodoSE<>(new Solicitud(1, 1000.0, "Cliente 1")));
-        solicitudes.Agregar(new NodoSE<>(new Solicitud(2, 2000.0, "Cliente 2")));
+        solicitudes.Agregar(new Solicitud(7, 80000, "Cliente 3"));
+        solicitudes.Agregar(new Solicitud(1, 1000.0, "Cliente 1"));
+        solicitudes.Agregar(new Solicitud(2, 2000.0, "Cliente 2"));
 
         System.out.println("Algunas solicitudes: ");
         for (int i = 0; i < solicitudes.tamanio(); i++) {
-            System.out.println("N identidad: "+solicitudes.Obtener(i).getSolicitud().getN_identidad()+
-                    " Saldo: "+ solicitudes.Obtener(i).getSolicitud().getCant_depositar());
+            System.out.println("N identidad: "+solicitudes.Obtener(i).getN_identidad()+
+                    " Saldo: "+ solicitudes.Obtener(i).getCant_depositar());
         }
 
         System.out.println("Algunas cuentas: ");
 
 
-        cuentas.Agregar(new NodoSE<>(new Cuenta(1, 50000.0, 0)));
-        cuentas.Agregar(new NodoSE<>(new Cuenta(2, 2000000.0, 1)));
+        cuentas.Agregar(new Cuenta(1, 50000.0, 0));
+        cuentas.Agregar(new Cuenta(2, 2000000.0, 1));
         for (int i = 0; i < cuentas.tamanio(); i++) {
-            System.out.println("N identidad: "+cuentas.Obtener(i).getCuenta().getN_identidad()+
-                    " Saldo: "+ cuentas.Obtener(i).getCuenta().getSaldo_actual());
+            System.out.println("N identidad: "+cuentas.Obtener(i).getN_identidad()+
+                    " Saldo: "+ cuentas.Obtener(i).getSaldo_actual());
         }
 
         // Crear instancia del Banco
@@ -41,8 +41,8 @@ public class Main {
         banco.AtenderTodasLasSolicitudes();
         System.out.println("Cuentas actualizadas: ");
         for (int i = 0; i < cuentas.tamanio(); i++) {
-            System.out.println("N identidad: "+cuentas.Obtener(i).getCuenta().getN_identidad()+
-                    " Saldo: "+ cuentas.Obtener(i).getCuenta().getSaldo_actual());
+            System.out.println("N identidad: "+cuentas.Obtener(i).getN_identidad()+
+                    " Saldo: "+ cuentas.Obtener(i).getSaldo_actual());
         }
         System.out.println("\nDar de baja a millonarios");
 
@@ -51,8 +51,8 @@ public class Main {
 
         System.out.println("Cuentas actualizadas: ");
         for (int i = 0; i < cuentas.tamanio(); i++) {
-            System.out.println("N identidad: "+cuentas.Obtener(i).getCuenta().getN_identidad()+
-                    " Saldo: "+ cuentas.Obtener(i).getCuenta().getSaldo_actual());
+            System.out.println("N identidad: "+cuentas.Obtener(i).getN_identidad()+
+                    " Saldo: "+ cuentas.Obtener(i).getSaldo_actual());
         }
 
 
@@ -60,8 +60,8 @@ public class Main {
         System.out.println("Cuentas de millonarios:");
 
         for (int i = 0; i < listaMillonarios.tamanio(); i++) {
-            System.out.println("N identidad: "+listaMillonarios.Obtener(i).getCuenta().getN_identidad()+
-                    " Saldo: "+ listaMillonarios.Obtener(i).getCuenta().getSaldo_actual());
+            System.out.println("N identidad: "+listaMillonarios.Obtener(i).getN_identidad()+
+                    " Saldo: "+ listaMillonarios.Obtener(i).getSaldo_actual());
         }
 
 
