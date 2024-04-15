@@ -72,7 +72,7 @@ public class ListaSE<T> {
                 cabeza= cabeza.getSiguiente(); //solo queda la cabeza apuntando a null
             }else{
                 NodoSE<T> nodoAnterior = cabeza;
-                for(int i=0;i<pos;i++){
+                for(int i=0;i<pos-1;i++){
                     nodoAnterior=nodoAnterior.getSiguiente();
                 }
                 if(pos==tamanio()-1){

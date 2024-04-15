@@ -5,6 +5,7 @@ public class Banco {
     private ListaSE<Cuenta> cuentas;
 
 
+
     public void adicionarCuenta(Cuenta c){
         cuentas.Agregar(new NodoSE<Cuenta>(c));
     }
